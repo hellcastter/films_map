@@ -6,9 +6,21 @@
 
 This project shows map with 10 closest films which were been filmed near specific location in some year. The result will be saved in a map in HTML format that can be opened in web-browser.
 
+This information can be used for tourists as well as people who are interested in filming and want to visit some legendary places nearby.
+
+## Result example
+
+Example for the following command
+
+```cmd
+python3 main.py 2003 36 -96.5 locations1000.list
+```
+
+![Example](./example.png)
+
 ## Time restriction
 
-The original file has 1.200.000 films and serials. It's too much for a normal situation. So we were forced to decrease to 40.000. If you feel it's too long or you have a bad internet connection - feel free to decrease it more.
+The original file has 1.200.000 films and serials. It's too much for a normal situation. So we were forced to decrease _locations.list_ to 40.000. If you feel it's too long or you have a bad internet connection there is _location1000.list_, which has 1000 films or feel free to decrease files more.
 
 ## Installation and start
 

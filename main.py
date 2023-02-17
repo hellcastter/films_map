@@ -178,7 +178,7 @@ def generate_map(latitude: float, longitude: float, nearest_films: list, path: s
     folium_map.add_child(folium.Marker(
         location=[latitude, longitude],
         icon=folium.Icon(color="red"),
-        tooltip="<h4>Your location</h4>"
+        tooltip="<h4>Selected location</h4>"
     ))
     folium_map.save(path)
 
