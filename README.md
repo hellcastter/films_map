@@ -1,7 +1,5 @@
 # Films Map
 
----
-
 ## About project
 
 This project shows map with 10 closest films which were been filmed near specific location in some year. The result will be saved in a map in HTML format that can be opened in web-browser.
