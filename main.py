@@ -31,7 +31,7 @@ def get_coordinates(place: str) -> tuple[float, float]:
     """
     try:
         location = geolocator.geocode(place)
-    except:
+    except: # pylint: disable=bare-except
         return None
 
     return (location.latitude, location.longitude) if location else None
@@ -51,6 +51,8 @@ def calculate_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
 
     >>> calculate_distance(50, 23, 50, 24)
     71.47418874347893
+    >>> calculate_distance(30, 54, 12, 54)
+    2001.508679602057
     """
     earth_radius = 6371
 
@@ -84,11 +86,13 @@ def parse_file(
 
     with open(path, 'r', encoding="utf-8") as file:
         for row in file.readlines():
+            # films only produced some year
             if f"({year})" not in row:
                 continue
 
             row = row[:-1].split('\t')
             name = row[0]
+            # if "("" and ")" in last cell => it's kind of comment
             location = row[-2 if '(' in row[-1] and ')' in row[-1] else -1]
 
             coordinates = get_coordinates(location)
@@ -98,9 +102,12 @@ def parse_file(
 
             place_latitude, place_longitude = coordinates
             distance = calculate_distance(place_latitude, place_longitude, latitude, longitude)
+
+            # resulting info about film
             result = (name, place_latitude, place_longitude, location, distance)
 
             # get only 10 films (not more)
+            # place this film in list sorted by distance
             i = 0
             while i < min(len(nearest_films), NUMBER_OF_FILMS):
                 if distance <= nearest_films[i][-1]:
