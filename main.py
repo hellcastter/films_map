@@ -218,7 +218,7 @@ if __name__ == "__main__":
     ctx = ssl.create_default_context(cafile=certifi.where())
     geopy.geocoders.options.default_ssl_context = ctx
 
-    # initialize geolocator
+    # initialize geolocato
     geolocator = Nominatim(user_agent="films_app")
     geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
 
